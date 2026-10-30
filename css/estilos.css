@@ -248,6 +248,9 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .esquema .tapa { fill: var(--plano); }
 .esquema .componente { fill: none; stroke: var(--tiza); stroke-width: 2.5; stroke-linejoin: round; }
 .esquema .grueso { stroke-width: 6; }
+.esquema .tapa-circulo { fill: var(--plano); }
+.esquema .flecha { fill: none; stroke: var(--tiza-suave); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.4s 0.6s; }
+.esquema.encendido .flecha { stroke: var(--cobre); }
 .esquema .led { fill: rgba(91, 224, 143, 0.08); transition: fill 0.5s 0.9s; }
 .esquema .signo { fill: var(--tiza-suave); font: 700 16px var(--titulo); }
 .esquema .valor { fill: var(--tiza-suave); font: 600 15px var(--titulo); }
