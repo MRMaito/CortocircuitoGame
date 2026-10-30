@@ -2,7 +2,7 @@
 
 Escape room educativo de matemática con temática de circuitos electrónicos – Proyecto Integrador III.
 
-Un cortocircuito dejó el Laboratorio 7 sin energía. El jugador tiene 45 minutos para resolver los problemas de matemática de cada tablero, restaurar la energía y escapar. Lo guía *Ohmi*, un robot de soldadura que da pistas.
+Un cortocircuito dejó el Laboratorio 7 sin energía. El jugador tiene 10 minutos para resolver los problemas de matemática de cada tablero, restaurar la energía y escapar. Lo guía *Ohmi*, un robot de soldadura que da pistas.
 
 **Jugar online:** https://mrmaito.github.io/CortocircuitoGame/
 
