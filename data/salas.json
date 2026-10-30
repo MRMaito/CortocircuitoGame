@@ -210,6 +210,356 @@
     },
     {
       "numero": 3,
+      "id": "memoria",
+      "nombre": "La memoria",
+      "tema": "Sistemas de numeración: binario",
+      "historia": "La memoria de las puertas guarda el código de acceso en binario. Leé qué LEDs están encendidos y pasá el número a decimal para desbloquearla.",
+      "ficha": {
+        "titulo": "Sistema binario",
+        "formula": "1011 = 1·8 + 0·4 + 1·2 + 1·1 = 11",
+        "explicacion": "Cada posición vale el doble que la de su derecha: 1, 2, 4, 8, 16, 32... Sumá los valores de las posiciones que tienen un 1."
+      },
+      "desafios": [
+        {
+          "id": "sala3-1011",
+          "enunciado": "Los LEDs de la memoria muestran el código 1011 (encendido = 1, apagado = 0). ¿Qué número es en decimal?",
+          "respuestas": [
+            {
+              "etiqueta": "Código",
+              "valor": 11,
+              "unidad": "en decimal"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Cada posición vale el doble que la de su derecha, empezando por 1.",
+            "Los valores de las posiciones son 8, 4, 2, 1.",
+            "Sumá los valores donde hay un 1: 8 + 2 + 1"
+          ],
+          "esquema": {
+            "tipo": "binario",
+            "bits": "1011"
+          }
+        },
+        {
+          "id": "sala3-11010",
+          "enunciado": "Los LEDs de la memoria muestran el código 11010 (encendido = 1, apagado = 0). ¿Qué número es en decimal?",
+          "respuestas": [
+            {
+              "etiqueta": "Código",
+              "valor": 26,
+              "unidad": "en decimal"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Cada posición vale el doble que la de su derecha, empezando por 1.",
+            "Los valores de las posiciones son 16, 8, 4, 2, 1.",
+            "Sumá los valores donde hay un 1: 16 + 8 + 2"
+          ],
+          "esquema": {
+            "tipo": "binario",
+            "bits": "11010"
+          }
+        },
+        {
+          "id": "sala3-100101",
+          "enunciado": "Los LEDs de la memoria muestran el código 100101 (encendido = 1, apagado = 0). ¿Qué número es en decimal?",
+          "respuestas": [
+            {
+              "etiqueta": "Código",
+              "valor": 37,
+              "unidad": "en decimal"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Cada posición vale el doble que la de su derecha, empezando por 1.",
+            "Los valores de las posiciones son 32, 16, 8, 4, 2, 1.",
+            "Sumá los valores donde hay un 1: 32 + 4 + 1"
+          ],
+          "esquema": {
+            "tipo": "binario",
+            "bits": "100101"
+          }
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "id": "colores",
+      "nombre": "El código de colores",
+      "tema": "Sistema posicional y potencias de 10",
+      "historia": "Las resistencias del cajón perdieron la etiqueta y solo quedan sus bandas de colores. Leelas para saber cuánto mide cada una.",
+      "ficha": {
+        "titulo": "Código de colores",
+        "formula": "R = (1ª banda · 10 + 2ª banda) · 10^(3ª banda)",
+        "explicacion": "Negro 0, marrón 1, rojo 2, naranja 3, amarillo 4, verde 5, azul 6, violeta 7, gris 8, blanco 9. La tercera banda dice cuántos ceros agregar."
+      },
+      "desafios": [
+        {
+          "id": "sala4-rojo-violeta-naranja",
+          "enunciado": "La resistencia tiene las bandas rojo, violeta y naranja. ¿Cuánto mide?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 27000,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Rojo vale 2 y violeta vale 7: las dos primeras bandas forman el número 27.",
+            "La tercera banda, naranja, vale 3: multiplicá por 10 elevado a 3.",
+            "R = 27 · 1000"
+          ],
+          "esquema": {
+            "tipo": "colores",
+            "bandas": [
+              "rojo",
+              "violeta",
+              "naranja"
+            ]
+          }
+        },
+        {
+          "id": "sala4-marrón-negro-rojo",
+          "enunciado": "La resistencia tiene las bandas marrón, negro y rojo. ¿Cuánto mide?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 1000,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Marrón vale 1 y negro vale 0: las dos primeras bandas forman el número 10.",
+            "La tercera banda, rojo, vale 2: multiplicá por 10 elevado a 2.",
+            "R = 10 · 100"
+          ],
+          "esquema": {
+            "tipo": "colores",
+            "bandas": [
+              "marrón",
+              "negro",
+              "rojo"
+            ]
+          }
+        },
+        {
+          "id": "sala4-amarillo-violeta-marrón",
+          "enunciado": "La resistencia tiene las bandas amarillo, violeta y marrón. ¿Cuánto mide?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 470,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Amarillo vale 4 y violeta vale 7: las dos primeras bandas forman el número 47.",
+            "La tercera banda, marrón, vale 1: multiplicá por 10 elevado a 1.",
+            "R = 47 · 10"
+          ],
+          "esquema": {
+            "tipo": "colores",
+            "bandas": [
+              "amarillo",
+              "violeta",
+              "marrón"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 5,
+      "id": "calidad",
+      "nombre": "El control de calidad",
+      "tema": "Porcentajes",
+      "historia": "Antes de instalar una resistencia hay que verificar que su valor real esté dentro de la tolerancia que indica el fabricante.",
+      "ficha": {
+        "titulo": "Tolerancia",
+        "formula": "R mín = R − R · t / 100   y   R máx = R + R · t / 100",
+        "explicacion": "La tolerancia es el porcentaje que el valor real puede alejarse del nominal, hacia arriba o hacia abajo."
+      },
+      "desafios": [
+        {
+          "id": "sala5-1000-5",
+          "enunciado": "Una resistencia de 1.000 Ω tiene una tolerancia de ±5 %. ¿Cuáles son sus valores mínimo y máximo aceptables?",
+          "respuestas": [
+            {
+              "etiqueta": "R mín",
+              "valor": 950.0,
+              "unidad": "Ω"
+            },
+            {
+              "etiqueta": "R máx",
+              "valor": 1050.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Calculá primero cuántos ohms representa el porcentaje.",
+            "El 5 % de 1.000 es 1.000 · 5 / 100 = 50 Ω.",
+            "R mín = 1.000 − 50 y R máx = 1.000 + 50"
+          ],
+          "esquema": {
+            "tipo": "tolerancia",
+            "nominal": "1.000 Ω",
+            "tolerancia": "±5 %"
+          }
+        },
+        {
+          "id": "sala5-220-10",
+          "enunciado": "Una resistencia de 220 Ω tiene una tolerancia de ±10 %. ¿Cuáles son sus valores mínimo y máximo aceptables?",
+          "respuestas": [
+            {
+              "etiqueta": "R mín",
+              "valor": 198.0,
+              "unidad": "Ω"
+            },
+            {
+              "etiqueta": "R máx",
+              "valor": 242.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Calculá primero cuántos ohms representa el porcentaje.",
+            "El 10 % de 220 es 220 · 10 / 100 = 22 Ω.",
+            "R mín = 220 − 22 y R máx = 220 + 22"
+          ],
+          "esquema": {
+            "tipo": "tolerancia",
+            "nominal": "220 Ω",
+            "tolerancia": "±10 %"
+          }
+        },
+        {
+          "id": "sala5-4700-2",
+          "enunciado": "Una resistencia de 4.700 Ω tiene una tolerancia de ±2 %. ¿Cuáles son sus valores mínimo y máximo aceptables?",
+          "respuestas": [
+            {
+              "etiqueta": "R mín",
+              "valor": 4606.0,
+              "unidad": "Ω"
+            },
+            {
+              "etiqueta": "R máx",
+              "valor": 4794.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Calculá primero cuántos ohms representa el porcentaje.",
+            "El 2 % de 4.700 es 4.700 · 2 / 100 = 94 Ω.",
+            "R mín = 4.700 − 94 y R máx = 4.700 + 94"
+          ],
+          "esquema": {
+            "tipo": "tolerancia",
+            "nominal": "4.700 Ω",
+            "tolerancia": "±2 %"
+          }
+        }
+      ]
+    },
+    {
+      "numero": 6,
+      "id": "bateria",
+      "nombre": "La batería",
+      "tema": "Proporcionalidad y regla de tres",
+      "historia": "La batería de emergencia tiene que alimentar las luces de evacuación. Calculá cuánto tiempo aguanta antes de agotarse.",
+      "ficha": {
+        "titulo": "Capacidad de una batería",
+        "formula": "t = capacidad (mAh) / consumo (mA)",
+        "explicacion": "Con la mitad de consumo la batería dura el doble: la duración es inversamente proporcional a la corriente que se consume."
+      },
+      "desafios": [
+        {
+          "id": "sala6-2000-250",
+          "enunciado": "La batería de emergencia tiene 2.000 mAh y la luz de evacuación consume 250 mA. ¿Cuántas horas puede funcionar?",
+          "respuestas": [
+            {
+              "etiqueta": "t",
+              "valor": 8.0,
+              "unidad": "h"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "mAh significa: cuántos miliamperes puede entregar durante una hora.",
+            "Si a 2.000 mA dura 1 hora, a 250 mA dura 2.000 / 250 veces más.",
+            "t = 2.000 / 250"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "lampara",
+            "fuente": "2.000 mAh",
+            "datos": [
+              "250 mA"
+            ]
+          }
+        },
+        {
+          "id": "sala6-3000-500",
+          "enunciado": "La batería de emergencia tiene 3.000 mAh y la alarma consume 500 mA. ¿Cuántas horas puede funcionar?",
+          "respuestas": [
+            {
+              "etiqueta": "t",
+              "valor": 6.0,
+              "unidad": "h"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "mAh significa: cuántos miliamperes puede entregar durante una hora.",
+            "Si a 3.000 mA dura 1 hora, a 500 mA dura 3.000 / 500 veces más.",
+            "t = 3.000 / 500"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "lampara",
+            "fuente": "3.000 mAh",
+            "datos": [
+              "500 mA"
+            ]
+          }
+        },
+        {
+          "id": "sala6-2400-200",
+          "enunciado": "La batería de emergencia tiene 2.400 mAh y el cartel de salida consume 200 mA. ¿Cuántas horas puede funcionar?",
+          "respuestas": [
+            {
+              "etiqueta": "t",
+              "valor": 12.0,
+              "unidad": "h"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "mAh significa: cuántos miliamperes puede entregar durante una hora.",
+            "Si a 2.400 mA dura 1 hora, a 200 mA dura 2.400 / 200 veces más.",
+            "t = 2.400 / 200"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "lampara",
+            "fuente": "2.400 mAh",
+            "datos": [
+              "200 mA"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 7,
       "id": "tablero",
       "nombre": "El tablero",
       "tema": "Fracciones: resistencias en serie y en paralelo",
@@ -221,7 +571,7 @@
       },
       "desafios": [
         {
-          "id": "sala3-6-3",
+          "id": "sala7-6-3",
           "enunciado": "Dos resistencias de 6 Ω y 3 Ω están conectadas en paralelo. ¿Cuál es la resistencia equivalente?",
           "respuestas": [
             {
@@ -243,7 +593,7 @@
           }
         },
         {
-          "id": "sala3-12-4",
+          "id": "sala7-12-4",
           "enunciado": "Dos resistencias de 12 Ω y 4 Ω están conectadas en paralelo. ¿Cuál es la resistencia equivalente?",
           "respuestas": [
             {
@@ -265,7 +615,7 @@
           }
         },
         {
-          "id": "sala3-serie",
+          "id": "sala7-serie",
           "enunciado": "Una resistencia de 4 Ω está en serie con dos resistencias en paralelo de 6 Ω y 3 Ω. ¿Cuál es la resistencia equivalente total?",
           "respuestas": [
             {
@@ -285,6 +635,745 @@
             "r1": "6 Ω",
             "r2": "3 Ω",
             "serie": "4 Ω"
+          }
+        }
+      ]
+    },
+    {
+      "numero": 8,
+      "id": "divisor",
+      "nombre": "El divisor de tensión",
+      "tema": "Proporciones",
+      "historia": "El sensor de la puerta funciona con menos tensión que la fuente. Un divisor con dos resistencias baja la tensión: calculá cuánto le llega.",
+      "ficha": {
+        "titulo": "Divisor de tensión",
+        "formula": "V salida = V entrada · R₂ / (R₁ + R₂)",
+        "explicacion": "La tensión se reparte entre las dos resistencias en proporción a sus valores. R₂ se queda con la fracción R₂ / (R₁ + R₂)."
+      },
+      "desafios": [
+        {
+          "id": "sala8-12-2-1",
+          "enunciado": "Un divisor de tensión recibe 12 V y tiene R₁ = 2 kΩ y R₂ = 1 kΩ. ¿Qué tensión le llega al sensor, conectado sobre R₂?",
+          "respuestas": [
+            {
+              "etiqueta": "V salida",
+              "valor": 4.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La tensión se reparte en proporción a cada resistencia.",
+            "R₂ se queda con la fracción 1 / (2 + 1) = 1 / 3 de la tensión.",
+            "V salida = 12 · 1 / 3"
+          ],
+          "esquema": {
+            "tipo": "divisor",
+            "fuente": "12 V",
+            "r1": "2 kΩ",
+            "r2": "1 kΩ"
+          }
+        },
+        {
+          "id": "sala8-9-1-2",
+          "enunciado": "Un divisor de tensión recibe 9 V y tiene R₁ = 1 kΩ y R₂ = 2 kΩ. ¿Qué tensión le llega al sensor, conectado sobre R₂?",
+          "respuestas": [
+            {
+              "etiqueta": "V salida",
+              "valor": 6.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La tensión se reparte en proporción a cada resistencia.",
+            "R₂ se queda con la fracción 2 / (1 + 2) = 2 / 3 de la tensión.",
+            "V salida = 9 · 2 / 3"
+          ],
+          "esquema": {
+            "tipo": "divisor",
+            "fuente": "9 V",
+            "r1": "1 kΩ",
+            "r2": "2 kΩ"
+          }
+        },
+        {
+          "id": "sala8-15-4-1",
+          "enunciado": "Un divisor de tensión recibe 15 V y tiene R₁ = 4 kΩ y R₂ = 1 kΩ. ¿Qué tensión le llega al sensor, conectado sobre R₂?",
+          "respuestas": [
+            {
+              "etiqueta": "V salida",
+              "valor": 3.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La tensión se reparte en proporción a cada resistencia.",
+            "R₂ se queda con la fracción 1 / (4 + 1) = 1 / 5 de la tensión.",
+            "V salida = 15 · 1 / 5"
+          ],
+          "esquema": {
+            "tipo": "divisor",
+            "fuente": "15 V",
+            "r1": "4 kΩ",
+            "r2": "1 kΩ"
+          }
+        }
+      ]
+    },
+    {
+      "numero": 9,
+      "id": "transformador",
+      "nombre": "El transformador",
+      "tema": "Proporcionalidad directa",
+      "historia": "Para cargar la batería de emergencia hay que bajar los 220 V de la red. El transformador lo hace con dos bobinados de distinta cantidad de vueltas.",
+      "ficha": {
+        "titulo": "Relación de transformación",
+        "formula": "V₂ / V₁ = N₂ / N₁",
+        "explicacion": "Si el secundario tiene la mitad de vueltas que el primario, entrega la mitad de tensión. Armá la proporción y despejá lo que falta."
+      },
+      "desafios": [
+        {
+          "id": "sala9-v-220-1000-50",
+          "enunciado": "El transformador recibe 220 V en el primario, que tiene 1.000 vueltas. El secundario tiene 50 vueltas. ¿Qué tensión entrega?",
+          "respuestas": [
+            {
+              "etiqueta": "V₂",
+              "valor": 11.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La tensión es directamente proporcional a la cantidad de vueltas.",
+            "Planteá la proporción: V₂ / 220 = 50 / 1.000.",
+            "V₂ = 220 · 50 / 1.000"
+          ],
+          "esquema": {
+            "tipo": "transformador",
+            "izquierda": [
+              "220 V",
+              "1.000 vueltas"
+            ],
+            "derecha": [
+              "50 vueltas"
+            ]
+          }
+        },
+        {
+          "id": "sala9-n-220-1000-22",
+          "enunciado": "El primario recibe 220 V y tiene 1.000 vueltas. Se necesitan 22 V a la salida. ¿Cuántas vueltas tiene que tener el secundario?",
+          "respuestas": [
+            {
+              "etiqueta": "N₂",
+              "valor": 100.0,
+              "unidad": "vueltas"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La tensión es directamente proporcional a la cantidad de vueltas.",
+            "Planteá la proporción: N₂ / 1.000 = 22 / 220.",
+            "N₂ = 1.000 · 22 / 220"
+          ],
+          "esquema": {
+            "tipo": "transformador",
+            "izquierda": [
+              "220 V",
+              "1.000 vueltas"
+            ],
+            "derecha": [
+              "22 V"
+            ]
+          }
+        },
+        {
+          "id": "sala9-v-110-500-25",
+          "enunciado": "El transformador recibe 110 V en el primario, que tiene 500 vueltas. El secundario tiene 25 vueltas. ¿Qué tensión entrega?",
+          "respuestas": [
+            {
+              "etiqueta": "V₂",
+              "valor": 5.5,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La tensión es directamente proporcional a la cantidad de vueltas.",
+            "Planteá la proporción: V₂ / 110 = 25 / 500.",
+            "V₂ = 110 · 25 / 500"
+          ],
+          "esquema": {
+            "tipo": "transformador",
+            "izquierda": [
+              "110 V",
+              "500 vueltas"
+            ],
+            "derecha": [
+              "25 vueltas"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "id": "lampara",
+      "nombre": "La lámpara",
+      "tema": "Ecuaciones: despeje de fórmulas",
+      "historia": "Las lámparas del pasillo están quemadas. Para pedir los repuestos correctos necesitás calcular su potencia, su corriente o su tensión.",
+      "ficha": {
+        "titulo": "Potencia eléctrica",
+        "formula": "P = V · I",
+        "explicacion": "La potencia se mide en watts (W). Si conocés dos de los tres valores, despejá el tercero."
+      },
+      "desafios": [
+        {
+          "id": "sala10-P-6",
+          "enunciado": "La lámpara de emergencia funciona con 12 V y consume 0,5 A. ¿Qué potencia tiene?",
+          "respuestas": [
+            {
+              "etiqueta": "P",
+              "valor": 6.0,
+              "unidad": "W"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La potencia es tensión por corriente.",
+            "P = V · I",
+            "P = 12 · 0,5"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "lampara",
+            "datos": [
+              "12 V",
+              "0,5 A"
+            ]
+          }
+        },
+        {
+          "id": "sala10-I-1100",
+          "enunciado": "El reflector del pasillo es de 1.100 W y se conecta a 220 V. ¿Qué corriente consume?",
+          "respuestas": [
+            {
+              "etiqueta": "I",
+              "valor": 5.0,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Partí de P = V · I y despejá I.",
+            "I = P / V",
+            "I = 1.100 / 220"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "lampara",
+            "datos": [
+              "1.100 W",
+              "220 V"
+            ]
+          }
+        },
+        {
+          "id": "sala10-V-60",
+          "enunciado": "Una lámpara de 60 W consume 5 A. ¿Con qué tensión funciona?",
+          "respuestas": [
+            {
+              "etiqueta": "V",
+              "valor": 12.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Partí de P = V · I y despejá V.",
+            "V = P / I",
+            "V = 60 / 5"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "lampara",
+            "datos": [
+              "60 W",
+              "5 A"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 11,
+      "id": "osciloscopio",
+      "nombre": "El osciloscopio",
+      "tema": "Función lineal y pendiente",
+      "historia": "La pantalla del osciloscopio muestra cómo cambia la corriente cuando sube la tensión. La recta delata qué resistencia hay en el circuito.",
+      "ficha": {
+        "titulo": "Gráfico tensión-corriente",
+        "formula": "R = ΔV / ΔI",
+        "explicacion": "En una resistencia, la corriente es proporcional a la tensión: el gráfico es una recta que pasa por el origen. Tomá dos puntos y dividí las diferencias."
+      },
+      "desafios": [
+        {
+          "id": "sala11-200",
+          "enunciado": "La recta del osciloscopio pasa por los puntos (2 V; 0,01 A) y (6 V; 0,03 A). ¿Cuánto vale la resistencia?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 200.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La resistencia es el cociente entre la variación de tensión y la variación de corriente.",
+            "ΔV = 6 − 2 = 4 V  y  ΔI = 0,03 − 0,01 = 0,02 A.",
+            "R = 4 / 0,02"
+          ],
+          "esquema": {
+            "tipo": "grafico-vi",
+            "puntos": [
+              [
+                2,
+                0.01
+              ],
+              [
+                6,
+                0.03
+              ]
+            ]
+          }
+        },
+        {
+          "id": "sala11-150",
+          "enunciado": "La recta del osciloscopio pasa por los puntos (3 V; 0,02 A) y (9 V; 0,06 A). ¿Cuánto vale la resistencia?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 150.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La resistencia es el cociente entre la variación de tensión y la variación de corriente.",
+            "ΔV = 9 − 3 = 6 V  y  ΔI = 0,06 − 0,02 = 0,04 A.",
+            "R = 6 / 0,04"
+          ],
+          "esquema": {
+            "tipo": "grafico-vi",
+            "puntos": [
+              [
+                3,
+                0.02
+              ],
+              [
+                9,
+                0.06
+              ]
+            ]
+          }
+        },
+        {
+          "id": "sala11-500",
+          "enunciado": "La recta del osciloscopio pasa por los puntos (4 V; 0,008 A) y (10 V; 0,02 A). ¿Cuánto vale la resistencia?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 500.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La resistencia es el cociente entre la variación de tensión y la variación de corriente.",
+            "ΔV = 10 − 4 = 6 V  y  ΔI = 0,02 − 0,008 = 0,012 A.",
+            "R = 6 / 0,012"
+          ],
+          "esquema": {
+            "tipo": "grafico-vi",
+            "puntos": [
+              [
+                4,
+                0.008
+              ],
+              [
+                10,
+                0.02
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 12,
+      "id": "estufa",
+      "nombre": "La estufa",
+      "tema": "Potencias y raíz cuadrada",
+      "historia": "La estufa del laboratorio tiene la placa quemada. Sabés su potencia y su resistencia: calculá qué corriente necesita el repuesto.",
+      "ficha": {
+        "titulo": "Potencia en una resistencia",
+        "formula": "P = I² · R   →   I = √(P / R)",
+        "explicacion": "Dividí la potencia por la resistencia para obtener I². Después sacá la raíz cuadrada."
+      },
+      "desafios": [
+        {
+          "id": "sala12-4-100",
+          "enunciado": "La estufa del laboratorio tiene una resistencia de 100 Ω y disipa 4 W. ¿Qué corriente circula por ella?",
+          "respuestas": [
+            {
+              "etiqueta": "I",
+              "valor": 0.2,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Usá P = I² · R y despejá I.",
+            "I² = P / R = 4 / 100 = 0,04.",
+            "I = √0,04"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "resistencia",
+            "datos": [
+              "100 Ω",
+              "4 W"
+            ]
+          }
+        },
+        {
+          "id": "sala12-18-2",
+          "enunciado": "La estufa del laboratorio tiene una resistencia de 2 Ω y disipa 18 W. ¿Qué corriente circula por ella?",
+          "respuestas": [
+            {
+              "etiqueta": "I",
+              "valor": 3.0,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Usá P = I² · R y despejá I.",
+            "I² = P / R = 18 / 2 = 9.",
+            "I = √9"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "resistencia",
+            "datos": [
+              "2 Ω",
+              "18 W"
+            ]
+          }
+        },
+        {
+          "id": "sala12-50-8",
+          "enunciado": "La estufa del laboratorio tiene una resistencia de 8 Ω y disipa 50 W. ¿Qué corriente circula por ella?",
+          "respuestas": [
+            {
+              "etiqueta": "I",
+              "valor": 2.5,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Usá P = I² · R y despejá I.",
+            "I² = P / R = 50 / 8 = 6,25.",
+            "I = √6,25"
+          ],
+          "esquema": {
+            "tipo": "lampara",
+            "simbolo": "resistencia",
+            "datos": [
+              "8 Ω",
+              "50 W"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 13,
+      "id": "puente",
+      "nombre": "El puente",
+      "tema": "Proporciones y ecuaciones con fracciones",
+      "historia": "Un puente de Wheatstone mide resistencias desconocidas: cuando el medidor del centro marca cero, las resistencias guardan la misma proporción.",
+      "ficha": {
+        "titulo": "Puente equilibrado",
+        "formula": "R₁ / R₂ = R₃ / Rx",
+        "explicacion": "Si el puente está equilibrado, armá la proporción y despejá Rx multiplicando en cruz."
+      },
+      "desafios": [
+        {
+          "id": "sala13-100-200-50",
+          "enunciado": "El puente está equilibrado con R₁ = 100 Ω, R₂ = 200 Ω y R₃ = 50 Ω. ¿Cuánto vale la resistencia desconocida Rx?",
+          "respuestas": [
+            {
+              "etiqueta": "Rx",
+              "valor": 100.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "En equilibrio se cumple la proporción R₁ / R₂ = R₃ / Rx.",
+            "100 / 200 = 50 / Rx. Multiplicá en cruz.",
+            "Rx = 50 · 200 / 100"
+          ],
+          "esquema": {
+            "tipo": "puente",
+            "r1": "100 Ω",
+            "r2": "200 Ω",
+            "r3": "50 Ω"
+          }
+        },
+        {
+          "id": "sala13-300-100-60",
+          "enunciado": "El puente está equilibrado con R₁ = 300 Ω, R₂ = 100 Ω y R₃ = 60 Ω. ¿Cuánto vale la resistencia desconocida Rx?",
+          "respuestas": [
+            {
+              "etiqueta": "Rx",
+              "valor": 20.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "En equilibrio se cumple la proporción R₁ / R₂ = R₃ / Rx.",
+            "300 / 100 = 60 / Rx. Multiplicá en cruz.",
+            "Rx = 60 · 100 / 300"
+          ],
+          "esquema": {
+            "tipo": "puente",
+            "r1": "300 Ω",
+            "r2": "100 Ω",
+            "r3": "60 Ω"
+          }
+        },
+        {
+          "id": "sala13-150-450-40",
+          "enunciado": "El puente está equilibrado con R₁ = 150 Ω, R₂ = 450 Ω y R₃ = 40 Ω. ¿Cuánto vale la resistencia desconocida Rx?",
+          "respuestas": [
+            {
+              "etiqueta": "Rx",
+              "valor": 120.0,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "En equilibrio se cumple la proporción R₁ / R₂ = R₃ / Rx.",
+            "150 / 450 = 40 / Rx. Multiplicá en cruz.",
+            "Rx = 40 · 450 / 150"
+          ],
+          "esquema": {
+            "tipo": "puente",
+            "r1": "150 Ω",
+            "r2": "450 Ω",
+            "r3": "40 Ω"
+          }
+        }
+      ]
+    },
+    {
+      "numero": 14,
+      "id": "senal",
+      "nombre": "La señal",
+      "tema": "Función seno y período",
+      "historia": "La red eléctrica no entrega una tensión fija: oscila como una onda senoidal. Para sincronizar el generador hay que leer bien la señal.",
+      "ficha": {
+        "titulo": "Señal senoidal",
+        "formula": "f = 1 / T   y   v = V máx · sen(α)",
+        "explicacion": "La frecuencia (en hertz) es la inversa del período (en segundos). El valor de la tensión en un instante es el valor máximo por el seno del ángulo."
+      },
+      "desafios": [
+        {
+          "id": "sala14-20-10-30",
+          "enunciado": "La señal tiene un período de 20 ms y un valor máximo de 10 V. ¿Cuál es su frecuencia y cuánto vale la tensión cuando el ángulo es de 30°?",
+          "respuestas": [
+            {
+              "etiqueta": "f",
+              "valor": 50.0,
+              "unidad": "Hz"
+            },
+            {
+              "etiqueta": "v",
+              "valor": 5.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La frecuencia es la inversa del período, con el período en segundos.",
+            "20 ms = 0,02 s. Para la tensión: sen(30°) = 0,5.",
+            "f = 1 / 0,02  y  v = 10 · 0,5"
+          ],
+          "esquema": {
+            "tipo": "senoidal",
+            "periodo": "20 ms",
+            "vmax": "10 V",
+            "angulo": 30
+          }
+        },
+        {
+          "id": "sala14-10-12-30",
+          "enunciado": "La señal tiene un período de 10 ms y un valor máximo de 12 V. ¿Cuál es su frecuencia y cuánto vale la tensión cuando el ángulo es de 30°?",
+          "respuestas": [
+            {
+              "etiqueta": "f",
+              "valor": 100.0,
+              "unidad": "Hz"
+            },
+            {
+              "etiqueta": "v",
+              "valor": 6.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La frecuencia es la inversa del período, con el período en segundos.",
+            "10 ms = 0,01 s. Para la tensión: sen(30°) = 0,5.",
+            "f = 1 / 0,01  y  v = 12 · 0,5"
+          ],
+          "esquema": {
+            "tipo": "senoidal",
+            "periodo": "10 ms",
+            "vmax": "12 V",
+            "angulo": 30
+          }
+        },
+        {
+          "id": "sala14-50-8-90",
+          "enunciado": "La señal tiene un período de 50 ms y un valor máximo de 8 V. ¿Cuál es su frecuencia y cuánto vale la tensión cuando el ángulo es de 90°?",
+          "respuestas": [
+            {
+              "etiqueta": "f",
+              "valor": 20.0,
+              "unidad": "Hz"
+            },
+            {
+              "etiqueta": "v",
+              "valor": 8.0,
+              "unidad": "V"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "La frecuencia es la inversa del período, con el período en segundos.",
+            "50 ms = 0,05 s. Para la tensión: sen(90°) = 1.",
+            "f = 1 / 0,05  y  v = 8 · 1"
+          ],
+          "esquema": {
+            "tipo": "senoidal",
+            "periodo": "50 ms",
+            "vmax": "8 V",
+            "angulo": 90
+          }
+        }
+      ]
+    },
+    {
+      "numero": 15,
+      "id": "salida",
+      "nombre": "La salida",
+      "tema": "Sistemas de ecuaciones 2×2",
+      "historia": "La puerta final tiene dos circuitos en paralelo que necesitan la corriente justa. Repartí la corriente total entre las ramas para abrirla y escapar.",
+      "ficha": {
+        "titulo": "Leyes de Kirchhoff",
+        "formula": "I = I₁ + I₂   y   R₁ · I₁ = R₂ · I₂",
+        "explicacion": "La corriente total se reparte entre las ramas, y las dos ramas en paralelo tienen la misma tensión. Es un sistema de dos ecuaciones con dos incógnitas."
+      },
+      "desafios": [
+        {
+          "id": "sala15-0_6-10-20",
+          "enunciado": "Entran 0,6 A y se reparten entre dos ramas en paralelo de 10 Ω y 20 Ω. ¿Cuánta corriente pasa por cada rama?",
+          "respuestas": [
+            {
+              "etiqueta": "I₁",
+              "valor": 0.4,
+              "unidad": "A"
+            },
+            {
+              "etiqueta": "I₂",
+              "valor": 0.2,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Planteá dos ecuaciones: la suma de las corrientes y la igualdad de tensiones.",
+            "I₁ + I₂ = 0,6  y  10 · I₁ = 20 · I₂.",
+            "De la segunda, I₁ = 20 · I₂ / 10. Reemplazá eso en la primera y despejá I₂."
+          ],
+          "esquema": {
+            "tipo": "kirchhoff",
+            "total": "0,6 A",
+            "r1": "10 Ω",
+            "r2": "20 Ω"
+          }
+        },
+        {
+          "id": "sala15-0_9-20-10",
+          "enunciado": "Entran 0,9 A y se reparten entre dos ramas en paralelo de 20 Ω y 10 Ω. ¿Cuánta corriente pasa por cada rama?",
+          "respuestas": [
+            {
+              "etiqueta": "I₁",
+              "valor": 0.3,
+              "unidad": "A"
+            },
+            {
+              "etiqueta": "I₂",
+              "valor": 0.6,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Planteá dos ecuaciones: la suma de las corrientes y la igualdad de tensiones.",
+            "I₁ + I₂ = 0,9  y  20 · I₁ = 10 · I₂.",
+            "De la segunda, I₁ = 10 · I₂ / 20. Reemplazá eso en la primera y despejá I₂."
+          ],
+          "esquema": {
+            "tipo": "kirchhoff",
+            "total": "0,9 A",
+            "r1": "20 Ω",
+            "r2": "10 Ω"
+          }
+        },
+        {
+          "id": "sala15-1-30-20",
+          "enunciado": "Entran 1 A y se reparten entre dos ramas en paralelo de 30 Ω y 20 Ω. ¿Cuánta corriente pasa por cada rama?",
+          "respuestas": [
+            {
+              "etiqueta": "I₁",
+              "valor": 0.4,
+              "unidad": "A"
+            },
+            {
+              "etiqueta": "I₂",
+              "valor": 0.6,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Planteá dos ecuaciones: la suma de las corrientes y la igualdad de tensiones.",
+            "I₁ + I₂ = 1  y  30 · I₁ = 20 · I₂.",
+            "De la segunda, I₁ = 20 · I₂ / 30. Reemplazá eso en la primera y despejá I₂."
+          ],
+          "esquema": {
+            "tipo": "kirchhoff",
+            "total": "1 A",
+            "r1": "30 Ω",
+            "r2": "20 Ω"
           }
         }
       ]
