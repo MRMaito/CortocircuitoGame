@@ -4,7 +4,7 @@
 import { esCorrecta } from './validar.js';
 
 export const CONFIG = {
-  duracion: 20 * 60,      // segundos de batería de emergencia
+  duracion: 45 * 60,      // segundos de batería de emergencia
   penalizacionError: 15,  // segundos que resta cada respuesta incorrecta
   puntosBase: 100,
   bonusMaximo: 60,        // bonus por rapidez: 60 - segundos usados en la sala
