@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cortocircuito: Escape del Laboratorio</title>
+  <meta name="description" content="Escape room educativo de matemática con temática de circuitos electrónicos.">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <main class="laboratorio">
+
+    <!-- Pantalla de inicio -->
+    <section id="pantalla-inicio" class="pantalla activa">
+      <div class="leds-titulo" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h1>CORTO<span>CIRCUITO</span></h1>
+      <p class="subtitulo">Escape del Laboratorio 7</p>
+      <p class="intro">
+        Un cortocircuito dejó la escuela sin energía y las puertas electrónicas se bloquearon.
+        Tenés <strong>20 minutos</strong> antes de que se agote la batería de emergencia.
+        Resolvé los problemas de cada tablero para restaurar la energía y escapar.
+      </p>
+      <ul class="reglas">
+        <li>Cada respuesta incorrecta resta 15 segundos.</li>
+        <li>Ohmi te puede dar hasta 3 pistas por sala, pero cuestan puntos.</li>
+        <li>Cuanto más rápido resolvés, más bonus sumás.</li>
+      </ul>
+      <button id="boton-jugar" class="boton boton-principal" disabled>Cargando...</button>
+      <p id="error-carga" class="error-carga" hidden></p>
+    </section>
+
+    <!-- Pantalla de juego -->
+    <section id="pantalla-juego" class="pantalla">
+      <div class="hud">
+        <div class="hud-dato">
+          <span class="hud-etiqueta">Batería</span>
+          <span id="hud-tiempo" class="hud-valor" aria-live="off">20:00</span>
+        </div>
+        <div class="hud-energia">
+          <span class="hud-etiqueta">Energía restaurada</span>
+          <div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="hud-barra" class="barra-relleno"></div>
+          </div>
+        </div>
+        <div class="hud-dato">
+          <span class="hud-etiqueta">Puntaje</span>
+          <span id="hud-puntaje" class="hud-valor">0</span>
+        </div>
+      </div>
+
+      <div class="tablero">
+        <div id="led-sala" class="led-grande" aria-hidden="true"></div>
+        <div id="contenedor-sala"></div>
+      </div>
+
+      <aside class="ohmi">
+        <div class="ohmi-avatar" aria-hidden="true">
+          <div class="ohmi-ojo"></div><div class="ohmi-ojo"></div>
+        </div>
+        <div class="ohmi-burbuja">
+          <p id="ohmi-texto" aria-live="polite"></p>
+          <div class="ohmi-acciones">
+            <button id="boton-pista" class="boton boton-secundario">Pedir pista (−10)</button>
+            <button id="boton-siguiente" class="boton boton-principal" hidden>Abrir la puerta →</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Pantalla final -->
+    <section id="pantalla-final" class="pantalla">
+      <h2 id="final-titulo"></h2>
+      <p id="final-mensaje" class="intro"></p>
+      <dl class="resultado">
+        <div><dt>Puntaje</dt><dd id="final-puntaje">0</dd></div>
+        <div><dt>Tiempo usado</dt><dd id="final-tiempo">00:00</dd></div>
+        <div><dt>Salas superadas</dt><dd id="final-salas">0</dd></div>
+      </dl>
+      <form id="form-ranking" class="form-ranking">
+        <label for="nombre-jugador">Tu nombre para el ranking</label>
+        <div class="fila">
+          <input id="nombre-jugador" type="text" maxlength="20" autocomplete="off" placeholder="Ej: Ada Lovelace">
+          <button class="boton boton-principal" type="submit">Guardar</button>
+        </div>
+      </form>
+      <h3>Ranking</h3>
+      <ol id="lista-ranking" class="ranking"></ol>
+      <button id="boton-reiniciar" class="boton boton-secundario">Jugar de nuevo</button>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "salas": [
+    {
+      "numero": 1,
+      "id": "fuente",
+      "nombre": "La fuente",
+      "tema": "Ecuaciones lineales (despeje)",
+      "historia": "La fuente de emergencia funciona, pero el LED que abre la puerta se quemaría si lo conectás directo. Tenés que elegir la resistencia justa para protegerlo.",
+      "ficha": {
+        "titulo": "Ley de Ohm",
+        "formula": "V = I · R",
+        "explicacion": "La resistencia recibe la tensión que sobra entre la fuente y el LED. Despejá R: R = (V fuente − V LED) / I."
+      },
+      "desafios": [
+        {
+          "id": "sala1-led-9v",
+          "enunciado": "La fuente entrega 9 V. El LED consume 2 V y necesita 0,02 A. ¿Qué resistencia tenés que conectar en serie?",
+          "respuestas": [{ "etiqueta": "R", "valor": 350, "unidad": "Ω" }],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Recordá la Ley de Ohm: V = I · R.",
+            "La resistencia recibe la tensión que sobra: 9 V − 2 V = 7 V.",
+            "R = 7 / 0,02"
+          ]
+        },
+        {
+          "id": "sala1-led-5v",
+          "enunciado": "La fuente entrega 5 V. El LED consume 2 V y necesita 0,01 A. ¿Qué resistencia tenés que conectar en serie?",
+          "respuestas": [{ "etiqueta": "R", "valor": 300, "unidad": "Ω" }],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Recordá la Ley de Ohm: V = I · R.",
+            "La resistencia recibe la tensión que sobra: 5 V − 2 V = 3 V.",
+            "R = 3 / 0,01"
+          ]
+        },
+        {
+          "id": "sala1-led-12v",
+          "enunciado": "La fuente entrega 12 V. El LED consume 2 V y necesita 0,02 A. ¿Qué resistencia tenés que conectar en serie?",
+          "respuestas": [{ "etiqueta": "R", "valor": 500, "unidad": "Ω" }],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Recordá la Ley de Ohm: V = I · R.",
+            "La resistencia recibe la tensión que sobra: 12 V − 2 V = 10 V.",
+            "R = 10 / 0,02"
+          ]
+        }
+      ]
+    }
+  ]
+}
