@@ -15,35 +15,277 @@
         {
           "id": "sala1-led-9v",
           "enunciado": "La fuente entrega 9 V. El LED consume 2 V y necesita 0,02 A. ¿Qué resistencia tenés que conectar en serie?",
-          "respuestas": [{ "etiqueta": "R", "valor": 350, "unidad": "Ω" }],
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 350,
+              "unidad": "Ω"
+            }
+          ],
           "tolerancia": 0.01,
           "pistas": [
             "Recordá la Ley de Ohm: V = I · R.",
             "La resistencia recibe la tensión que sobra: 9 V − 2 V = 7 V.",
             "R = 7 / 0,02"
-          ]
+          ],
+          "esquema": {
+            "tipo": "serie-led",
+            "fuente": "9 V",
+            "led": [
+              "LED de 2 V",
+              "0,02 A"
+            ]
+          }
         },
         {
           "id": "sala1-led-5v",
           "enunciado": "La fuente entrega 5 V. El LED consume 2 V y necesita 0,01 A. ¿Qué resistencia tenés que conectar en serie?",
-          "respuestas": [{ "etiqueta": "R", "valor": 300, "unidad": "Ω" }],
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 300,
+              "unidad": "Ω"
+            }
+          ],
           "tolerancia": 0.01,
           "pistas": [
             "Recordá la Ley de Ohm: V = I · R.",
             "La resistencia recibe la tensión que sobra: 5 V − 2 V = 3 V.",
             "R = 3 / 0,01"
-          ]
+          ],
+          "esquema": {
+            "tipo": "serie-led",
+            "fuente": "5 V",
+            "led": [
+              "LED de 2 V",
+              "0,01 A"
+            ]
+          }
         },
         {
           "id": "sala1-led-12v",
           "enunciado": "La fuente entrega 12 V. El LED consume 2 V y necesita 0,02 A. ¿Qué resistencia tenés que conectar en serie?",
-          "respuestas": [{ "etiqueta": "R", "valor": 500, "unidad": "Ω" }],
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 500,
+              "unidad": "Ω"
+            }
+          ],
           "tolerancia": 0.01,
           "pistas": [
             "Recordá la Ley de Ohm: V = I · R.",
             "La resistencia recibe la tensión que sobra: 12 V − 2 V = 10 V.",
             "R = 10 / 0,02"
-          ]
+          ],
+          "esquema": {
+            "tipo": "serie-led",
+            "fuente": "12 V",
+            "led": [
+              "LED de 2 V",
+              "0,02 A"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "id": "almacen",
+      "nombre": "El almacén",
+      "tema": "Notación científica y potencias de 10",
+      "historia": "Los cajones de repuestos están rotulados con prefijos y el inventario quedó a medias. Para encontrar las piezas que necesitás, pasá cada valor a la unidad que pide la planilla.",
+      "ficha": {
+        "titulo": "Prefijos del Sistema Internacional",
+        "formula": "k = 10³ · M = 10⁶ · m = 10⁻³",
+        "explicacion": "Para pasar de kilo a la unidad, multiplicá por 1000. Para pasar de la unidad a mili, también multiplicá por 1000. Para ir al revés, dividí."
+      },
+      "desafios": [
+        {
+          "id": "sala2-4k7",
+          "enunciado": "Convertí los valores del cajón A: la resistencia mide 4,7 kΩ y la corriente máxima es 0,005 A.",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 4700,
+              "unidad": "Ω"
+            },
+            {
+              "etiqueta": "I",
+              "valor": 5,
+              "unidad": "mA"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Kilo significa 10³ y mili significa 10⁻³.",
+            "4,7 kΩ = 4,7 · 1000 Ω. Para pasar amperes a miliamperes, también multiplicá por 1000.",
+            "R = 4,7 · 1000 e I = 0,005 · 1000"
+          ],
+          "esquema": {
+            "tipo": "conversion",
+            "items": [
+              {
+                "simbolo": "resistencia",
+                "desde": "4,7 kΩ"
+              },
+              {
+                "simbolo": "amperimetro",
+                "desde": "0,005 A"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sala2-2k2",
+          "enunciado": "Convertí los valores del cajón B: la resistencia mide 2,2 kΩ y la corriente máxima es 0,03 A.",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 2200,
+              "unidad": "Ω"
+            },
+            {
+              "etiqueta": "I",
+              "valor": 30,
+              "unidad": "mA"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Kilo significa 10³ y mili significa 10⁻³.",
+            "2,2 kΩ = 2,2 · 1000 Ω. Para pasar amperes a miliamperes, también multiplicá por 1000.",
+            "R = 2,2 · 1000 e I = 0,03 · 1000"
+          ],
+          "esquema": {
+            "tipo": "conversion",
+            "items": [
+              {
+                "simbolo": "resistencia",
+                "desde": "2,2 kΩ"
+              },
+              {
+                "simbolo": "amperimetro",
+                "desde": "0,03 A"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sala2-1m5",
+          "enunciado": "Convertí los valores del cajón C: la resistencia mide 1,5 MΩ y la corriente es de 250 mA.",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 1500,
+              "unidad": "kΩ"
+            },
+            {
+              "etiqueta": "I",
+              "valor": 0.25,
+              "unidad": "A"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Mega significa 10⁶ y kilo 10³: de MΩ a kΩ hay un factor de 1000.",
+            "1,5 MΩ = 1,5 · 1000 kΩ. De miliamperes a amperes se divide por 1000.",
+            "R = 1,5 · 1000 e I = 250 / 1000"
+          ],
+          "esquema": {
+            "tipo": "conversion",
+            "items": [
+              {
+                "simbolo": "resistencia",
+                "desde": "1,5 MΩ"
+              },
+              {
+                "simbolo": "amperimetro",
+                "desde": "250 mA"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "id": "tablero",
+      "nombre": "El tablero",
+      "tema": "Fracciones: resistencias en serie y en paralelo",
+      "historia": "El tablero principal necesita una resistencia equivalente exacta para volver a arrancar. Solo tenés las resistencias que quedaron conectadas: calculá cuánto valen en conjunto.",
+      "ficha": {
+        "titulo": "Serie y paralelo",
+        "formula": "Serie: R = R₁ + R₂ · Paralelo: 1/R = 1/R₁ + 1/R₂",
+        "explicacion": "En paralelo, sumá las fracciones con denominador común y después invertí el resultado. Si hay una resistencia en serie, sumala al final."
+      },
+      "desafios": [
+        {
+          "id": "sala3-6-3",
+          "enunciado": "Dos resistencias de 6 Ω y 3 Ω están conectadas en paralelo. ¿Cuál es la resistencia equivalente?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 2,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "En paralelo: 1/R = 1/R₁ + 1/R₂.",
+            "1/6 + 1/3 = 1/6 + 2/6 = 3/6.",
+            "Si 1/R = 3/6 = 1/2, entonces R = 2/1."
+          ],
+          "esquema": {
+            "tipo": "paralelo",
+            "r1": "6 Ω",
+            "r2": "3 Ω"
+          }
+        },
+        {
+          "id": "sala3-12-4",
+          "enunciado": "Dos resistencias de 12 Ω y 4 Ω están conectadas en paralelo. ¿Cuál es la resistencia equivalente?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 3,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "En paralelo: 1/R = 1/R₁ + 1/R₂.",
+            "1/12 + 1/4 = 1/12 + 3/12 = 4/12.",
+            "Si 1/R = 4/12 = 1/3, entonces R = 3/1."
+          ],
+          "esquema": {
+            "tipo": "paralelo",
+            "r1": "12 Ω",
+            "r2": "4 Ω"
+          }
+        },
+        {
+          "id": "sala3-serie",
+          "enunciado": "Una resistencia de 4 Ω está en serie con dos resistencias en paralelo de 6 Ω y 3 Ω. ¿Cuál es la resistencia equivalente total?",
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 6,
+              "unidad": "Ω"
+            }
+          ],
+          "tolerancia": 0.01,
+          "pistas": [
+            "Resolvé primero el paralelo y después sumá la de 4 Ω.",
+            "El paralelo de 6 Ω y 3 Ω da 1/6 + 2/6 = 3/6, o sea 2 Ω.",
+            "R = 4 + 2"
+          ],
+          "esquema": {
+            "tipo": "paralelo",
+            "r1": "6 Ω",
+            "r2": "3 Ω",
+            "serie": "4 Ω"
+          }
         }
       ]
     }
