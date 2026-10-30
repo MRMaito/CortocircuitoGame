@@ -2,7 +2,7 @@
 
 import { Juego, CONFIG, formatearTiempo } from './juego.js';
 import { dibujarSala } from './sala.js';
-import { fraseDeOhmi } from './ohmi.js';
+import { fraseDeOhmi, ponerCara } from './ohmi.js';
 import { cargarRanking, guardarEnRanking } from './ranking.js';
 
 const $ = (id) => document.getElementById(id);
@@ -21,6 +21,7 @@ const ui = {
   puntaje: $('hud-puntaje'),
   contenedorSala: $('contenedor-sala'),
   ohmi: $('ohmi-texto'),
+  cara: document.querySelector('.ohmi-avatar'),
   pista: $('boton-pista'),
   siguiente: $('boton-siguiente'),
   finalTitulo: $('final-titulo'),
@@ -38,6 +39,18 @@ let juego = null;
 let vistaSala = null;
 let intervalo = null;
 let tipeo = null;
+let erroresSala = 0;
+let avisoPocoTiempo = false;
+let volverCara = null;
+
+// Pone una cara a Ohmi y, pasado un rato, lo devuelve a su cara de reposo.
+function gesto(expresion, duracion = 3500) {
+  clearTimeout(volverCara);
+  ponerCara(ui.cara, expresion);
+  if (duracion) {
+    volverCara = setTimeout(() => ponerCara(ui.cara, avisoPocoTiempo ? 'sorprendido' : 'neutral'), duracion);
+  }
+}
 
 const sinMovimiento = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -106,6 +119,7 @@ function cargarSala() {
     responder();
   });
   ui.siguiente.hidden = true;
+  erroresSala = 0;
   actualizarBotonPista();
   actualizarHud();
 }
@@ -119,6 +133,7 @@ function responder() {
     vistaSala.bloquear();
     vistaSala.esquema?.resolver();
     decirOhmi(`${fraseDeOhmi('acierto')} +${resultado.puntos} puntos.`);
+    gesto('feliz', 4000);
     ui.siguiente.hidden = false;
     ui.siguiente.textContent = juego.indice + 1 < juego.salas.length ? 'Abrir la puerta' : 'Salir del laboratorio';
     ui.siguiente.focus();
@@ -128,7 +143,14 @@ function responder() {
     ui.contenedorSala.classList.remove('sacudir');
     void ui.contenedorSala.offsetWidth; // reinicia la animación
     ui.contenedorSala.classList.add('sacudir');
-    decirOhmi(fraseDeOhmi('error'));
+    erroresSala += 1;
+    if (erroresSala === 1) {
+      decirOhmi(fraseDeOhmi('duda'));
+      gesto('confundido');
+    } else {
+      decirOhmi(fraseDeOhmi('enojo'));
+      gesto('enojado');
+    }
     if (resultado.sinTiempo) return terminar();
   }
   actualizarHud();
@@ -136,7 +158,11 @@ function responder() {
 
 function pedirPista() {
   const pista = juego.pedirPista();
-  if (!pista) return decirOhmi(fraseDeOhmi('sinPistas'));
+  if (!pista) {
+    gesto('triste');
+    return decirOhmi(fraseDeOhmi('sinPistas'));
+  }
+  gesto('pensando', 5000);
   decirOhmi(`Pista (−${pista.costo}): ${pista.texto}`);
   actualizarBotonPista();
 }
@@ -145,7 +171,8 @@ function siguienteSala() {
   juego.siguienteSala();
   if (juego.terminado) return terminar();
   cargarSala();
-  decirOhmi('Nueva sala, nuevo tablero. ¡A trabajar!');
+  decirOhmi(fraseDeOhmi('nuevaSala'));
+  gesto(avisoPocoTiempo ? 'sorprendido' : 'neutral', 0);
 }
 
 function iniciar(salas) {
@@ -155,17 +182,25 @@ function iniciar(salas) {
   mostrarPantalla('juego');
   prepararLeds();
   cargarSala();
+  avisoPocoTiempo = false;
   decirOhmi(fraseDeOhmi('inicio'));
+  gesto('feliz');
   clearInterval(intervalo);
   intervalo = setInterval(() => {
     const sinTiempo = juego.tick();
     actualizarHud();
+    if (!avisoPocoTiempo && juego.restante <= 60 && !sinTiempo) {
+      avisoPocoTiempo = true;
+      decirOhmi(fraseDeOhmi('pocoTiempo'));
+      gesto('sorprendido', 0);
+    }
     if (sinTiempo) terminar();
   }, 1000);
 }
 
 function terminar() {
   clearInterval(intervalo);
+  clearTimeout(volverCara);
   const escapo = juego.escapo;
   document.body.classList.toggle('apagon', !escapo);
   ui.finalTitulo.textContent = escapo ? '¡Escapaste del laboratorio!' : 'Se agotó la batería';

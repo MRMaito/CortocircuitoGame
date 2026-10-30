@@ -30,7 +30,8 @@
   --plano-oscuro: #08121f; /* el laboratorio sin luz */
   --tiza: #d8e6f3;         /* líneas del esquema y texto */
   --tiza-suave: #93aac4;
-  --cobre: #e0873a;        /* corriente, acentos */
+  --neon: #3dff8b;         /* acento: textos destacados, corriente, botones */
+  --neon-brillo: rgba(61, 255, 139, 0.45);
   --led-verde: #5be08f;
   --led-rojo: #ff5a4e;
   --led-ambar: #ffb547;
@@ -122,7 +123,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
   16% { opacity: 0.15; }
   30% { opacity: 0.9; }
   34% { opacity: 0.3; }
-  100% { opacity: 1; text-shadow: 0 0 28px rgba(224, 135, 58, 0.45); }
+  100% { opacity: 1; text-shadow: 0 0 28px var(--neon-brillo); }
 }
 
 @keyframes chisporroteo {
@@ -130,7 +131,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
   20%, 24%, 62%, 100% { opacity: 0; }
 }
 
-.subtitulo { font: 600 1.15rem var(--titulo); color: var(--cobre); margin: 0 0 26px; }
+.subtitulo { font: 600 1.15rem var(--titulo); color: var(--neon); margin: 0 0 26px; text-shadow: 0 0 12px var(--neon-brillo); }
 
 .intro { max-width: 34em; margin: 0 auto 18px; color: var(--tiza-suave); }
 .intro strong { color: var(--tiza); }
@@ -139,7 +140,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .reglas li { padding: 5px 0 5px 28px; position: relative; color: var(--tiza-suave); }
 .reglas li::before {
   /* resistencia en miniatura */
-  content: ''; position: absolute; left: 0; top: 15px; width: 18px; height: 2px; background: var(--cobre);
+  content: ''; position: absolute; left: 0; top: 15px; width: 18px; height: 2px; background: var(--neon);
 }
 
 .error-carga { color: var(--led-rojo); margin-top: 16px; }
@@ -156,10 +157,10 @@ h1, h2, h3, .hud-numero, .resultado dd {
 }
 .boton:active { transform: translateY(1px); }
 .boton:disabled { opacity: 0.4; cursor: not-allowed; }
-.boton:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--led-ambar); outline-offset: 2px; }
+.boton:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid #ffffff; outline-offset: 2px; }
 
-.boton-principal { background: var(--cobre); color: #1a0e03; }
-.boton-principal:hover:not(:disabled) { background: #f09a50; }
+.boton-principal { background: var(--neon); color: #062413; box-shadow: 0 0 18px rgba(61, 255, 139, 0.35); }
+.boton-principal:hover:not(:disabled) { background: #7dffb1; box-shadow: 0 0 26px rgba(61, 255, 139, 0.6); }
 .boton-secundario { background: transparent; color: var(--tiza); border-color: var(--linea); }
 .boton-secundario:hover:not(:disabled) { border-color: var(--tiza); }
 
@@ -193,7 +194,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
   background: #2a1a1a; border: 2px solid #5a2f2b;
   transition: background-color 0.4s, box-shadow 0.4s, border-color 0.4s;
 }
-.leds-salas li.actual { border-color: var(--led-ambar); animation: titilar 1.6s infinite; }
+.leds-salas li.actual { border-color: var(--neon); box-shadow: 0 0 8px var(--neon-brillo); animation: titilar 1.6s infinite; }
 .leds-salas li.resuelta { background: var(--led-verde); border-color: #b9f7d0; box-shadow: 0 0 12px var(--led-verde); animation: none; }
 
 .hud-puntaje { margin: 0; color: var(--tiza-suave); }
@@ -210,7 +211,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
   to { opacity: 1; clip-path: inset(0 0 0 0); }
 }
 
-.sala-numero { margin: 0; font: 600 1rem var(--titulo); color: var(--cobre); }
+.sala-numero { margin: 0; font: 600 1rem var(--titulo); color: var(--neon); }
 .sala-nombre { margin: 2px 0 10px; font-size: 2.2rem; line-height: 1.1; }
 .sala-historia { color: var(--tiza-suave); margin: 0 0 18px; max-width: 36em; }
 
@@ -218,8 +219,8 @@ h1, h2, h3, .hud-numero, .resultado dd {
 
 .enunciado { font-size: 1.2rem; margin: 0 0 16px; max-width: 34em; }
 
-.ficha { margin-bottom: 20px; border-left: 3px solid var(--cobre); padding: 4px 0 4px 14px; }
-.ficha summary { cursor: pointer; font: 600 1rem var(--titulo); color: var(--cobre); }
+.ficha { margin-bottom: 20px; border-left: 3px solid var(--neon); padding: 4px 0 4px 14px; }
+.ficha summary { cursor: pointer; font: 600 1rem var(--titulo); color: var(--neon); }
 .ficha-formula { font: 700 1.5rem var(--titulo); margin: 10px 0 2px; }
 .ficha-explicacion { margin: 0; color: var(--tiza-suave); }
 
@@ -231,8 +232,8 @@ h1, h2, h3, .hud-numero, .resultado dd {
 }
 .campo input::placeholder { color: var(--tiza-suave); opacity: 0.6; }
 .campo input.incorrecto { border-color: var(--led-rojo); }
-.campo input:disabled { border-color: var(--led-verde); color: var(--led-verde); }
-.campo-unidad { color: var(--cobre); }
+.campo input:disabled { border-color: var(--neon); color: #ffffff; box-shadow: 0 0 12px var(--neon-brillo); }
+.campo-unidad { color: var(--neon); }
 
 .sacudir { animation: sacudir 0.4s; }
 @keyframes sacudir {
@@ -250,11 +251,11 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .esquema .grueso { stroke-width: 6; }
 .esquema .tapa-circulo { fill: var(--plano); }
 .esquema .flecha { fill: none; stroke: var(--tiza-suave); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.4s 0.6s; }
-.esquema.encendido .flecha { stroke: var(--cobre); }
+.esquema.encendido .flecha { stroke: var(--neon); }
 .esquema .led { fill: rgba(91, 224, 143, 0.08); transition: fill 0.5s 0.9s; }
 .esquema .signo { fill: var(--tiza-suave); font: 700 16px var(--titulo); }
 .esquema .valor { fill: var(--tiza-suave); font: 600 15px var(--titulo); }
-.esquema .incognita { fill: var(--cobre); font: 700 20px var(--titulo); transition: fill 0.4s; }
+.esquema .incognita { fill: var(--neon); font: 700 20px var(--titulo); transition: fill 0.4s; filter: drop-shadow(0 0 6px var(--neon-brillo)); }
 .esquema .rayos { fill: none; stroke: var(--led-verde); stroke-width: 2; stroke-linecap: round; opacity: 0; transition: opacity 0.4s 0.9s; }
 .esquema .brillo { fill: var(--led-verde); opacity: 0; filter: blur(14px); transition: opacity 0.6s 0.9s; }
 .esquema .chispa { fill: none; stroke: var(--led-ambar); stroke-width: 2.5; stroke-linecap: round; opacity: 0; }
@@ -269,7 +270,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .esquema .cuerpo-resistencia { fill: #c9b48a; stroke: var(--tiza); stroke-width: 2; }
 .esquema .banda { stroke: rgba(0, 0, 0, 0.25); stroke-width: 1; }
 .esquema .banda-dorada { fill: #c9a54a; }
-.esquema .rango { fill: var(--cobre); opacity: 0; transition: opacity 0.6s 0.4s; }
+.esquema .rango { fill: var(--neon); opacity: 0; transition: opacity 0.6s 0.4s; }
 .esquema.encendido .rango { opacity: 0.45; }
 .esquema .recta { fill: none; stroke: var(--tiza); stroke-width: 2.5; stroke-linecap: round; }
 .esquema .brillo-lampara { fill: var(--led-ambar); }
@@ -286,9 +287,9 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .esquema .punto { fill: var(--led-ambar); }
 @keyframes pulso-traza { 50% { stroke-width: 4.5; filter: drop-shadow(0 0 10px var(--led-verde)); } }
 
-/* La corriente: un trazo de cobre que recorre el circuito y queda circulando */
+/* La corriente: un trazo de neón que recorre el circuito y queda circulando */
 .esquema .corriente {
-  fill: none; stroke: var(--cobre); stroke-width: 4; stroke-linecap: round;
+  fill: none; stroke: var(--neon); stroke-width: 4; stroke-linecap: round;
   stroke-dasharray: 0 100; opacity: 0;
 }
 .esquema.encendido .corriente {
@@ -303,7 +304,7 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .esquema.encendido .led { fill: var(--led-verde); }
 .esquema.encendido .rayos { opacity: 1; }
 .esquema.encendido .brillo { opacity: 0.55; }
-.esquema.encendido .incognita { fill: var(--led-verde); }
+.esquema.encendido .incognita { fill: #ffffff; filter: drop-shadow(0 0 8px var(--neon)); }
 
 .esquema.falla .chispa { animation: chispazo 0.55s; }
 .esquema.falla .resistencia { animation: recalentar 0.55s; }
@@ -314,11 +315,26 @@ h1, h2, h3, .hud-numero, .resultado dd {
 
 .ohmi { display: flex; gap: 14px; align-items: flex-start; margin-top: 26px; }
 .ohmi-avatar {
-  flex: none; width: 54px; height: 54px; border-radius: 12px 12px 18px 18px; background: #22344f; border: 2px solid var(--cobre);
-  display: flex; justify-content: center; align-items: center; gap: 10px;
+  flex: none; width: 68px; height: 68px; border-radius: 14px 14px 20px 20px;
+  background: radial-gradient(circle at 50% 40%, #0f2a22, #07130f 75%);
+  border: 2px solid var(--neon); box-shadow: 0 0 14px rgba(61, 255, 139, 0.25), inset 0 0 12px rgba(61, 255, 139, 0.12);
 }
-.ohmi-ojo { width: 10px; height: 10px; border-radius: 50%; background: #7fe8ff; box-shadow: 0 0 8px #7fe8ff; animation: parpadeo 4.5s infinite; }
+.ohmi-avatar svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.ohmi-avatar .ojo { fill: var(--neon); filter: drop-shadow(0 0 3px var(--neon)); }
+.ohmi-avatar .trazo { fill: none; stroke: var(--neon); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 3px var(--neon)); }
+.ohmi-avatar .punto-cara { fill: var(--neon); opacity: 0.7; }
+.ohmi-avatar .signo-cara { fill: var(--neon); font: 700 16px var(--titulo); }
+.ohmi-avatar .parpadeo { transform-origin: 32px 32px; animation: parpadeo 4.5s infinite; }
+.ohmi-avatar .mirar-arriba { animation: mirar 2.4s ease-in-out infinite; }
+.ohmi-avatar.cambio svg { animation: cambio-cara 0.35s ease-out; }
+.ohmi-avatar[data-cara='enojado'] { border-color: var(--led-rojo); box-shadow: 0 0 16px rgba(255, 90, 78, 0.45); }
+.ohmi-avatar[data-cara='enojado'] .ojo, .ohmi-avatar[data-cara='enojado'] .trazo { fill: var(--led-rojo); stroke: var(--led-rojo); filter: drop-shadow(0 0 3px var(--led-rojo)); }
+.ohmi-avatar[data-cara='enojado'] .trazo { fill: none; }
+.ohmi-avatar[data-cara='enojado'] svg { animation: cambio-cara 0.35s ease-out, temblar 0.12s linear 4; }
 @keyframes parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes mirar { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-3px, -1px); } }
+@keyframes cambio-cara { 0% { transform: scale(1, 0.2); } 60% { transform: scale(1, 1.12); } 100% { transform: scale(1, 1); } }
+@keyframes temblar { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(2px); } }
 
 .ohmi-burbuja {
   flex: 1; position: relative; background: rgba(8, 18, 31, 0.55); border: 2px solid var(--linea);
@@ -353,7 +369,7 @@ body:not(.apagon) .titulo-final { text-shadow: 0 0 28px rgba(91, 224, 143, 0.4);
 
 .ranking { max-width: 26em; margin: 0 auto 26px; text-align: left; padding-left: 28px; }
 .ranking li { padding: 3px 0; color: var(--tiza-suave); font-variant-numeric: tabular-nums; }
-.ranking li:first-child { color: var(--cobre); font-weight: 700; }
+.ranking li:first-child { color: var(--neon); font-weight: 700; }
 .ranking li.vacio { list-style: none; margin-left: -28px; text-align: center; color: var(--tiza-suave); font-weight: 400; }
 
 /* ---------- Celular ---------- */
