@@ -259,6 +259,33 @@ h1, h2, h3, .hud-numero, .resultado dd {
 .esquema .brillo { fill: var(--led-verde); opacity: 0; filter: blur(14px); transition: opacity 0.6s 0.9s; }
 .esquema .chispa { fill: none; stroke: var(--led-ambar); stroke-width: 2.5; stroke-linecap: round; opacity: 0; }
 
+
+/* Piezas de las salas 3 a 15 */
+.esquema .peso { fill: var(--tiza-suave); font: 600 13px var(--titulo); }
+.esquema .bit { stroke-width: 2; }
+.esquema .bit-1 { fill: var(--led-verde); stroke: #b9f7d0; }
+.esquema .bit-0 { fill: #2a1a1a; stroke: #5a2f2b; }
+.esquema .brillo-bit { fill: var(--led-verde); opacity: 0.35; filter: blur(8px); }
+.esquema .cuerpo-resistencia { fill: #c9b48a; stroke: var(--tiza); stroke-width: 2; }
+.esquema .banda { stroke: rgba(0, 0, 0, 0.25); stroke-width: 1; }
+.esquema .banda-dorada { fill: #c9a54a; }
+.esquema .rango { fill: var(--cobre); opacity: 0; transition: opacity 0.6s 0.4s; }
+.esquema.encendido .rango { opacity: 0.45; }
+.esquema .recta { fill: none; stroke: var(--tiza); stroke-width: 2.5; stroke-linecap: round; }
+.esquema .brillo-lampara { fill: var(--led-ambar); }
+.esquema .brillo-calor { fill: var(--led-rojo); }
+.esquema.encendido .lamp { fill: rgba(255, 181, 71, 0.35); }
+.esquema .borne { fill: var(--plano); stroke: var(--tiza); stroke-width: 2; }
+.esquema .nucleo { fill: none; stroke: var(--tiza-suave); stroke-width: 3; }
+.esquema .caja { fill: var(--plano); }
+.esquema .pantalla-osc { fill: rgba(4, 16, 12, 0.7); stroke: var(--linea); stroke-width: 2; }
+.esquema .eje { fill: none; stroke: var(--tiza-suave); stroke-width: 1.5; }
+.esquema .guia { fill: none; stroke: var(--tiza-suave); stroke-width: 1; stroke-dasharray: 4 4; }
+.esquema .traza { fill: none; stroke: var(--led-verde); stroke-width: 2.5; stroke-linecap: round; filter: drop-shadow(0 0 3px rgba(91, 224, 143, 0.6)); }
+.esquema.encendido .traza { animation: pulso-traza 1.2s ease-in-out 2; }
+.esquema .punto { fill: var(--led-ambar); }
+@keyframes pulso-traza { 50% { stroke-width: 4.5; filter: drop-shadow(0 0 10px var(--led-verde)); } }
+
 /* La corriente: un trazo de cobre que recorre el circuito y queda circulando */
 .esquema .corriente {
   fill: none; stroke: var(--cobre); stroke-width: 4; stroke-linecap: round;
