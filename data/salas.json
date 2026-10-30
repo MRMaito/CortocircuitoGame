@@ -15,35 +15,77 @@
         {
           "id": "sala1-led-9v",
           "enunciado": "La fuente entrega 9 V. El LED consume 2 V y necesita 0,02 A. ¿Qué resistencia tenés que conectar en serie?",
-          "respuestas": [{ "etiqueta": "R", "valor": 350, "unidad": "Ω" }],
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 350,
+              "unidad": "Ω"
+            }
+          ],
           "tolerancia": 0.01,
           "pistas": [
             "Recordá la Ley de Ohm: V = I · R.",
             "La resistencia recibe la tensión que sobra: 9 V − 2 V = 7 V.",
             "R = 7 / 0,02"
-          ]
+          ],
+          "esquema": {
+            "tipo": "serie-led",
+            "fuente": "9 V",
+            "led": [
+              "LED de 2 V",
+              "0,02 A"
+            ]
+          }
         },
         {
           "id": "sala1-led-5v",
           "enunciado": "La fuente entrega 5 V. El LED consume 2 V y necesita 0,01 A. ¿Qué resistencia tenés que conectar en serie?",
-          "respuestas": [{ "etiqueta": "R", "valor": 300, "unidad": "Ω" }],
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 300,
+              "unidad": "Ω"
+            }
+          ],
           "tolerancia": 0.01,
           "pistas": [
             "Recordá la Ley de Ohm: V = I · R.",
             "La resistencia recibe la tensión que sobra: 5 V − 2 V = 3 V.",
             "R = 3 / 0,01"
-          ]
+          ],
+          "esquema": {
+            "tipo": "serie-led",
+            "fuente": "5 V",
+            "led": [
+              "LED de 2 V",
+              "0,01 A"
+            ]
+          }
         },
         {
           "id": "sala1-led-12v",
           "enunciado": "La fuente entrega 12 V. El LED consume 2 V y necesita 0,02 A. ¿Qué resistencia tenés que conectar en serie?",
-          "respuestas": [{ "etiqueta": "R", "valor": 500, "unidad": "Ω" }],
+          "respuestas": [
+            {
+              "etiqueta": "R",
+              "valor": 500,
+              "unidad": "Ω"
+            }
+          ],
           "tolerancia": 0.01,
           "pistas": [
             "Recordá la Ley de Ohm: V = I · R.",
             "La resistencia recibe la tensión que sobra: 12 V − 2 V = 10 V.",
             "R = 10 / 0,02"
-          ]
+          ],
+          "esquema": {
+            "tipo": "serie-led",
+            "fuente": "12 V",
+            "led": [
+              "LED de 2 V",
+              "0,02 A"
+            ]
+          }
         }
       ]
     }

@@ -16,10 +16,10 @@ const ui = {
   jugar: $('boton-jugar'),
   errorCarga: $('error-carga'),
   tiempo: $('hud-tiempo'),
-  barra: $('hud-barra'),
+  carga: $('bateria-carga'),
+  leds: $('hud-leds'),
   puntaje: $('hud-puntaje'),
   contenedorSala: $('contenedor-sala'),
-  ledSala: $('led-sala'),
   ohmi: $('ohmi-texto'),
   pista: $('boton-pista'),
   siguiente: $('boton-siguiente'),
@@ -37,22 +37,58 @@ const ui = {
 let juego = null;
 let vistaSala = null;
 let intervalo = null;
+let tipeo = null;
+
+const sinMovimiento = matchMedia('(prefers-reduced-motion: reduce)');
 
 function mostrarPantalla(nombre) {
   Object.entries(ui.pantallas).forEach(([clave, el]) => el.classList.toggle('activa', clave === nombre));
 }
 
+// Ohmi escribe letra por letra; con movimiento reducido, aparece de una.
 function decirOhmi(texto) {
-  ui.ohmi.textContent = texto;
+  clearInterval(tipeo);
+  if (sinMovimiento.matches) {
+    ui.ohmi.textContent = texto;
+    return;
+  }
+  ui.ohmi.setAttribute('aria-label', texto);
+  let i = 0;
+  ui.ohmi.textContent = '';
+  tipeo = setInterval(() => {
+    i += 2;
+    ui.ohmi.textContent = texto.slice(0, i);
+    if (i >= texto.length) clearInterval(tipeo);
+  }, 18);
+}
+
+function prepararLeds() {
+  ui.leds.replaceChildren(
+    ...juego.salas.map((s) => {
+      const li = document.createElement('li');
+      li.title = `Sala ${s.numero}: ${s.nombre}`;
+      return li;
+    })
+  );
+}
+
+// --luz va de 0 (laboratorio a oscuras) a 1 (toda la energía restaurada)
+function iluminar(valor) {
+  document.body.style.setProperty('--luz', valor.toFixed(2));
 }
 
 function actualizarHud() {
   ui.tiempo.textContent = formatearTiempo(juego.restante);
   ui.tiempo.classList.toggle('critico', juego.restante <= 60);
   ui.puntaje.textContent = juego.puntaje;
-  const porcentaje = Math.round((juego.salasSuperadas / juego.salas.length) * 100);
-  ui.barra.style.width = `${porcentaje}%`;
-  ui.barra.parentElement.setAttribute('aria-valuenow', porcentaje);
+  const carga = juego.restante / CONFIG.duracion;
+  ui.carga.style.width = `${carga * 100}%`;
+  ui.carga.dataset.nivel = carga <= 0.1 ? 'critico' : carga <= 0.3 ? 'bajo' : 'normal';
+  [...ui.leds.children].forEach((led, i) => {
+    led.classList.toggle('resuelta', i < juego.salasSuperadas);
+    led.classList.toggle('actual', i === juego.indice && !juego.resuelta);
+  });
+  iluminar(juego.salasSuperadas / juego.salas.length);
 }
 
 function actualizarBotonPista() {
@@ -69,7 +105,6 @@ function cargarSala() {
     e.preventDefault();
     responder();
   });
-  ui.ledSala.className = 'led-grande';
   ui.siguiente.hidden = true;
   actualizarBotonPista();
   actualizarHud();
@@ -82,14 +117,14 @@ function responder() {
 
   if (resultado.correcto) {
     vistaSala.bloquear();
-    ui.ledSala.className = 'led-grande encendido';
+    vistaSala.esquema?.resolver();
     decirOhmi(`${fraseDeOhmi('acierto')} +${resultado.puntos} puntos.`);
     ui.siguiente.hidden = false;
-    ui.siguiente.textContent = juego.indice + 1 < juego.salas.length ? 'Abrir la puerta →' : 'Salir del laboratorio →';
+    ui.siguiente.textContent = juego.indice + 1 < juego.salas.length ? 'Abrir la puerta' : 'Salir del laboratorio';
     ui.siguiente.focus();
     actualizarBotonPista();
   } else {
-    ui.ledSala.className = 'led-grande chispa';
+    vistaSala.esquema?.chispa();
     ui.contenedorSala.classList.remove('sacudir');
     void ui.contenedorSala.offsetWidth; // reinicia la animación
     ui.contenedorSala.classList.add('sacudir');
@@ -114,9 +149,11 @@ function siguienteSala() {
 }
 
 function iniciar(salas) {
+  document.body.classList.remove('apagon');
   juego = new Juego(salas);
   juego.iniciar();
   mostrarPantalla('juego');
+  prepararLeds();
   cargarSala();
   decirOhmi(fraseDeOhmi('inicio'));
   clearInterval(intervalo);
@@ -130,6 +167,7 @@ function iniciar(salas) {
 function terminar() {
   clearInterval(intervalo);
   const escapo = juego.escapo;
+  document.body.classList.toggle('apagon', !escapo);
   ui.finalTitulo.textContent = escapo ? '¡Escapaste del laboratorio!' : 'Se agotó la batería';
   ui.finalMensaje.textContent = escapo
     ? 'Restauraste toda la energía y las puertas se abrieron. Buen trabajo, técnico/a.'
@@ -151,7 +189,7 @@ function mostrarRanking(ranking) {
           li.textContent = `${r.nombre} — ${r.puntaje} pts · ${formatearTiempo(r.tiempo)}`;
           return li;
         })
-      : [Object.assign(document.createElement('li'), { textContent: 'Todavía no hay partidas guardadas.' })])
+      : [Object.assign(document.createElement('li'), { className: 'vacio', textContent: 'Todavía no hay partidas guardadas. ¡La tuya puede ser la primera!' })])
   );
 }
 

@@ -2,6 +2,8 @@
 // Para hacer una sala con un puzzle visual propio, se puede reemplazar la parte de "respuestas"
 // manteniendo la misma interfaz: devolver obtenerValores() con un string por respuesta.
 
+import { dibujarEsquema } from './esquema.js';
+
 function crear(etiqueta, clase, texto) {
   const el = document.createElement(etiqueta);
   if (clase) el.className = clase;
@@ -14,11 +16,15 @@ export function dibujarSala(contenedor, sala, desafio, total) {
 
   const encabezado = crear('header', 'sala-encabezado');
   encabezado.append(
-    crear('p', 'sala-numero', `Sala ${sala.numero} de ${total} · ${sala.tema}`),
+    crear('p', 'sala-numero', `Sala ${sala.numero} de ${total}: ${sala.tema.toLowerCase()}`),
     crear('h2', 'sala-nombre', sala.nombre)
   );
 
   const historia = crear('p', 'sala-historia', sala.historia);
+
+  const esquema = dibujarEsquema(desafio);
+  const figura = crear('figure', 'sala-esquema');
+  if (esquema) figura.append(esquema.el);
 
   const ficha = crear('details', 'ficha');
   ficha.append(
@@ -40,7 +46,7 @@ export function dibujarSala(contenedor, sala, desafio, total) {
     input.type = 'text';
     input.inputMode = 'decimal';
     input.autocomplete = 'off';
-    input.placeholder = '0';
+    input.placeholder = '?';
     campo.append(crear('span', 'campo-etiqueta', `${r.etiqueta} =`), input, crear('span', 'campo-unidad', r.unidad));
     formulario.append(campo);
     return input;
@@ -49,12 +55,13 @@ export function dibujarSala(contenedor, sala, desafio, total) {
   enviar.type = 'submit';
   formulario.append(enviar);
 
-  contenedor.append(encabezado, historia, ficha, enunciado, formulario);
-  inputs[0]?.focus();
+  contenedor.append(encabezado, historia, ...(esquema ? [figura] : []), enunciado, ficha, formulario);
+  inputs[0]?.focus({ preventScroll: true });
 
   return {
     formulario,
     inputs,
+    esquema,
     obtenerValores: () => inputs.map((i) => i.value),
     marcar(correctas) {
       inputs.forEach((input, i) => input.classList.toggle('incorrecto', !correctas[i]));
