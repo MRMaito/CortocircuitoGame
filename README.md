@@ -1,70 +1,59 @@
 # Cortocircuito: Escape del Laboratorio
 
-Escape room educativo de matemática con temática de circuitos electrónicos – Proyecto Integrador III.
+Escape room educativo de matemática con temática de circuitos electrónicos. Proyecto final de **Proyecto Integrador III**.
 
-Un cortocircuito dejó el Laboratorio 7 sin energía. El jugador tiene 10 minutos para resolver los problemas de matemática de cada tablero, restaurar la energía y escapar. Lo guía *Ohmi*, un robot de soldadura que da pistas.
+Un cortocircuito dejó el Laboratorio 7 sin energía. El jugador tiene **10 minutos** para resolver las 15 salas: en cada una hay un circuito que se arregla aplicando un tema de matemática (ecuaciones, porcentajes, fracciones, funciones, sistemas de ecuaciones...). Lo guía *Ohmi*, un robot de soldadura que da pistas y reacciona a cada respuesta.
 
-**Jugar online:** https://mrmaito.github.io/CortocircuitoGame/
+**▶ Jugar online:** https://mrmaito.github.io/CortocircuitoGame/
 
-## Cómo correrlo en tu compu
+![Una sala resuelta: la corriente recorre el circuito y el LED se enciende](docs/img/juego.png)
 
-El juego carga las salas desde `data/salas.json`, así que **no funciona abriendo `index.html` con doble clic**: hace falta un servidor local.
+## Jugar en tu compu
 
-```bash
-# Opción 1: Python (viene en Linux y macOS)
-python3 -m http.server 8000
+El juego necesita un servidor local (abrir `index.html` con doble clic **no funciona**, porque el navegador bloquea la carga de `data/salas.json`). Los scripts lo resuelven solos:
 
-# Opción 2: VS Code
-# Instalar la extensión "Live Server" y tocar "Go Live"
-```
+| Sistema | Qué hacer | Hace falta instalar |
+| --- | --- | --- |
+| **Windows** | Doble clic en **`jugar.bat`** | Nada |
+| Linux / macOS | `./jugar.sh` | Python 3 (ya viene instalado) |
 
-Después abrir http://localhost:8000
+Se abre el navegador con el juego. Para cerrarlo, cerrá la ventana negra (o `Ctrl + C`).
 
-## Tests
+> Si Windows muestra "Windows protegió su PC", tocá **Más información → Ejecutar de todas formas**. Pasa con cualquier archivo `.bat` bajado de internet.
 
-Requieren Node 18 o superior. No hay que instalar nada.
+## Correr los tests
 
-```bash
-npm test
-```
+| Sistema | Qué hacer | Hace falta instalar |
+| --- | --- | --- |
+| **Windows** | Doble clic en **`tests.bat`** | [Node.js](https://nodejs.org) (versión LTS) |
+| Linux / macOS | `npm test` | Node.js 18 o superior |
 
-- `tests/validar.test.js`: validación de respuestas (coma/punto, unidades, tolerancia ±1 %).
-- `tests/juego.test.js`: puntaje, timer, pistas y fin de partida.
-- `tests/salas.test.js`: revisa que `salas.json` esté bien cargado. **Córranlo cada vez que agreguen desafíos.**
+Son 74 tests: validación de respuestas, reglas del juego (timer, puntaje, pistas) y revisión de que las 45 preguntas estén bien cargadas.
+
+## Documentación
+
+| Documento | Para qué sirve |
+| --- | --- |
+| [Guía del equipo](docs/GUIA-EQUIPO.md) | **Empezá por acá.** Contexto del proyecto, qué está hecho, qué falta y cómo trabajamos con Git. |
+| [Arquitectura](docs/ARQUITECTURA.md) | Cómo está armado el código, cómo agregar o cambiar salas y dónde se configura el juego. |
+| [QA y pruebas](docs/QA.md) | Tests automáticos, checklist de prueba manual, pruebas de usabilidad y cómo reportar bugs. |
+| [Catálogo de salas](docs/SALAS.md) | Las 15 salas con su contenido de matemática, enunciados, respuestas y pistas. Sirve para el informe pedagógico. |
 
 ## Estructura
 
 ```
-index.html          pantallas de inicio, juego y final
-css/estilos.css     estética de placa de circuito
-js/main.js          arranque, timer y navegación entre pantallas
-js/juego.js         estado de la partida (sin DOM, testeable)
-js/sala.js          dibuja una sala a partir del JSON
-js/validar.js       compara respuestas con tolerancia
-js/ranking.js       top 10 en localStorage
-js/ohmi.js          frases del robot guía
-data/salas.json     salas y banco de desafíos
-tests/              tests con node:test
+index.html          las tres pantallas: inicio, juego y final
+css/estilos.css     todo el diseño
+js/                 la lógica del juego (ver docs/ARQUITECTURA.md)
+data/salas.json     las 15 salas y sus 45 desafíos
+assets/fuentes/     tipografías (incluidas para que funcione sin internet)
+tests/              tests automáticos
+tools/              servidor para Windows y scripts que generan salas y documentación
+docs/               documentación
+jugar.bat / .sh     doble clic para jugar
+tests.bat           doble clic para correr los tests
 ```
-
-## Cómo agregar una sala
-
-1. Agregar un objeto nuevo en `data/salas.json` con el siguiente `numero`, siguiendo el formato de la sala 1.
-2. Cargar entre 3 y 5 desafíos con valores distintos. Cada desafío tiene:
-   - `enunciado`: el problema.
-   - `respuestas`: una o más, cada una con `etiqueta`, `valor` (número) y `unidad`.
-   - `pistas`: hasta 3, de la más general a la más concreta.
-3. Verificar cada respuesta a mano (que la revise alguien distinto a quien la escribió).
-4. Correr `npm test`.
-
-Las salas con un puzzle visual propio (arrastrar resistencias, leer bandas de colores) se pueden armar en un módulo nuevo que reemplace la parte de respuestas de `js/sala.js`, siempre que devuelva `obtenerValores()` con un texto por respuesta.
-
-## Cómo trabajar en equipo
-
-- Nadie sube cambios directo a `main`: una rama por tarea (`sala-2`, `fix-timer`) y pull request.
-- Otro integrante revisa el PR antes de mergear.
-- Los bugs se cargan como *issues* con pasos para reproducirlos.
 
 ## Licencia
 
-MIT
+Código bajo licencia [MIT](LICENSE). Las tipografías Chakra Petch y Atkinson Hyperlegible tienen licencia SIL Open Font License.

@@ -1,0 +1,4 @@
+# Los scripts de Windows necesitan fin de línea CRLF; los de Linux, LF.
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.sh  text eol=lf
